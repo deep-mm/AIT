@@ -10,6 +10,10 @@ router.get('/', (req, res) => {
 	res.render('index', {text: 'This is the dynamic data. Open index.js from the routes directory to see.'})
 })
 
+router.get('/home', (req, res) => {
+	res.render('DIY', null)
+})
+
 /*  This route render json data */
 router.get('/json', (req, res) => {
 	res.json({
