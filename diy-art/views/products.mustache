@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DIY Art</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  <!-- Firebase App is always required and must be first -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+
+  <!-- Add additional services that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBvkSwewV6w7MA86TPMh-Tg0HDk9_TGfiY",
+    authDomain: "diy-market-f233d.firebaseapp.com",
+    databaseURL: "https://diy-market-f233d.firebaseio.com",
+    projectId: "diy-market-f233d",
+    storageBucket: "diy-market-f233d.appspot.com",
+    messagingSenderId: "140347004823"
+  };
+  firebase.initializeApp(config);
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="jumbotron" style="color:white">
+  <div class="container text-center">
+    <h1>DIY ART</h1>
+    <p>Art is the only way to run away without leaving home</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/home">Home</a></li>
+        <li class="active"><a href="/products">Products</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/signin"><span class="glyphicon glyphicon-user"></span> Sign In</a></li>
+        <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    {{#products}}
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">{{name}}</div>
+        <div class="panel-body"><img src="{{image}}" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">
+          <h3 class="price">{{price}}</h3>
+          <button class="addToCart" name="addToCart" action="/add/:name">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    {{/products}}
+  </div>
+</div>
+
+</body>
+</html>
