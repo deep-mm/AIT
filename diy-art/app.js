@@ -1,5 +1,5 @@
 // Full Documentation - https://www.turbo360.co/docs
-var firebase = require("firebase");
+const firebase = require("firebase");
 
 require("firebase/auth");
 require("firebase/database");
@@ -15,16 +15,16 @@ firebase.initializeApp(config);
 
 const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
 
-const app = vertex.express() // initialize app
+const app = vertex.express();// initialize app
 
-var iframeReplacement = require('node-iframe-replacement');
+const iframeReplacement = require('node-iframe-replacement');
 // add iframe replacement to express as middleware (adds res.merge method)
 app.use(iframeReplacement);
 
 // import routes
 const index = require('./routes/index')
 // set routes
-app.use('/', index)
+app.use('/', index);
 
 
-module.exports = app
+module.exports = app;
