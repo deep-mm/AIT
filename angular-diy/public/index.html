@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DIY Art</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBvkSwewV6w7MA86TPMh-Tg0HDk9_TGfiY",
+            authDomain: "diy-market-f233d.firebaseapp.com",
+            databaseURL: "https://diy-market-f233d.firebaseio.com",
+            projectId: "diy-market-f233d",
+            storageBucket: "diy-market-f233d.appspot.com",
+            messagingSenderId: "140347004823"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="jumbotron" style="color:white">
+    <div class="container text-center">
+        <h1>DIY ART</h1>
+        <p>Art is the only way to run away without leaving home</p>
+    </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/home">Home</a></li>
+                <li><a href="/products">Products</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/auth"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+                <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Add a product to sell</h1><br/><br/>
+</div>
+
+<footer class="container-fluid text-left" style="margin-left:30px ; margin-right:30px">
+
+    <div class="SignUp" style="margin-left:30px" >
+        <p>Add Product</p>
+        <form action="/addProduct" method="POST">
+            <p><input class="w3-input w3-border" type="text" placeholder="Product Name" name="Name" required></p>
+            <p><input class="w3-input w3-border" type="text" placeholder="Product Image" name="Image" required></p>
+            <p><input class="w3-input w3-border" type="text" placeholder="Product Price" name="Price" required></p>
+            <button type="submit" class="w3-button w3-block w3-black">Add Product</button>
+        </form>
+    </div>
+
+
+</footer>
+
+</body>
+</html>
