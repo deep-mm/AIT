@@ -16,6 +16,11 @@ footer {
   padding: 25px;
 }
 
+.img-responsive{
+  height: 300px;
+  width: 400px;
+}
+
 /* Style the search box inside the navigation bar */
 .topnav input[type=text] {
   float: right;

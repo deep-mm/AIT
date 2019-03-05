@@ -21,23 +21,8 @@ router.get('/signup', (req, res) => {
 	};
 
 	res.render('signup', data)
-	/*firebase.auth().onAuthStateChanged(function(user) {
-		if (user) {
-			clicked1();
-		} else {
-
-		}
-	});*/
 
 });
-
-function clicked() {
-	alert("Added to cart successfully");
-}
-
-function clicked1() {
-	alert("User already signed in");
-}
 
 router.get('/signin', (req, res) => {
 
@@ -45,14 +30,7 @@ router.get('/signin', (req, res) => {
 	 type: 'Sign In'
 	};
 
-	res.render('signin', data)
-	/*firebase.auth().onAuthStateChanged(function(user) {
-		if (user) {
-			clicked1()
-		} else {
-
-		}
-	});*/
+	res.render('signin', data);
 
 });
 
@@ -104,9 +82,16 @@ router.post('/addProduct', (req,res) => {
 		price: body.Price
 	};
 
-	database.ref('products/' + prodId).set(data);
-
-  res.redirect('back');
+	database.ref('products/' + prodId).set(data).then(function(){
+		res.redirect('back');
+	})
+		.catch(function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			res.send(errorMessage.toString())
+			// ...
+		});
 });
 
 router.post('/add/:name/:price', (req,res) => {
@@ -119,8 +104,16 @@ router.post('/add/:name/:price', (req,res) => {
 		price: price
 	};
 
-	database.ref('cart/' + cartId).set(data);
-	res.render('cart', null);
+	database.ref('cart/' + cartId).set(data).then(function(){
+		res.render('cart', null);
+	})
+		.catch(function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			res.send(errorMessage.toString())
+			// ...
+		});
 });
 
 router.get('/getCartItems', (req, res) => {
@@ -200,24 +193,38 @@ router.get('/addNewProduct/:name/:price/:image', (req,res) => {
 		price: price
 	};
 
-	database.ref('products/' + prodId).set(data);
-
-	res.json({
-		confirmation: 'success',
-		app: process.env.TURBO_APP_ID
+	database.ref('products/' + prodId).set(data).then(function(){
+		res.json({
+			confirmation: 'success',
+			app: process.env.TURBO_APP_ID
+		})
 	})
+		.catch(function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			res.send(errorMessage.toString())
+			// ...
+		});
 });
 
 router.get('/removeCartItem/:id', (req,res) => {
 
-	const prodId = req.params.id+'';
-
-	database.ref('cart').child(prodId).remove();
-
-	res.json({
-		confirmation: 'success',
-		app: process.env.TURBO_APP_ID
+	const prodId = req.params.id;
+	console.log(prodId);
+	database.ref('cart').child(prodId).remove().then(function(){
+		res.json({
+			confirmation: 'success',
+			app: process.env.TURBO_APP_ID
+		})
 	})
+		.catch(function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			res.send(errorMessage.toString())
+			// ...
+		});
 });
 
 /*  This route render json data */
