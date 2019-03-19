@@ -1,32 +1,32 @@
 .navbar {
-  margin-bottom: 50px;
-  border-radius: 0;
+    margin-bottom: 50px;
+    border-radius: 0;
 }
 
 /* Remove the jumbotron's default bottom margin */
- .jumbotron {
-   background-image: url("/images/jumbobg.jpg");
-   background-size: cover;
-  margin-bottom: 0;
+.jumbotron {
+    background-image: url("/images/jumbobg.jpg");
+    background-size: cover;
+    margin-bottom: 0;
 }
 
 /* Add a gray background color and some padding to the footer */
 footer {
-  background-color: #f2f2f2;
-  padding: 25px;
+    background-color: #f2f2f2;
+    padding: 25px;
 }
 
 .img-responsive{
-  height: 300px;
-  width: 400px;
+    height: 300px;
+    width: 400px;
 }
 
 /* Style the search box inside the navigation bar */
 .topnav input[type=text] {
-  float: right;
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
 }

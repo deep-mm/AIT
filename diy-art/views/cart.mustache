@@ -7,10 +7,17 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+        <script>
+            $(document).ready(function() {
+                $("#remove").click(function () {
+                    $("#cart").load("/getCartItems");
+                });
+            });
+        </script>
 	</head>
 
 	<body>
-
+    <div id="cart">
 		<nav class="navbar">
 			<div class="container">
 				<a class="navbar-brand" href="#">Your online store</a>
@@ -40,13 +47,14 @@
 						<span class="itemName">{{name}}</span>
 						<span class="popbtn"><a class="arrow"></a></span>
 						<span class="price">{{price}}</span>
-                        <a href="/removeCartItem/{{name}}_{{price}}"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a id="remove" href="/removeCartItem/{{name}}_{{price}}"><span class="glyphicon glyphicon-remove"></span></a>
 					</li>
                     {{/products}}
 				</ul>
 			</div>
 
 		</div>
+    </div>
 
 		<!-- The popover content -->
 

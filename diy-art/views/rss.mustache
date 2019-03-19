@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DIY Art</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://timesofindia.indiatimes.com/rssfeedstopstories.cms">
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="http://www.google.com/jsapi"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="/home">Add Product</a></li>
+                <li><a href="/products">Products</a></li>
+            </ul>
+            <ul id="bar" class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/rss"><span class="glyphicon glyphicon-user"></span> RSS</a></li>
+                <li><a href="/signin"><span class="glyphicon glyphicon-user"></span> Sign In</a></li>
+                <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/getCartItems"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--<div>
+    <div id="rss_feed"
+         data-feed="https://timesofindia.indiatimes.com/rssfeedstopstories.cms"
+         data-count="12">Loading RSS Feed..</div>
+</div>-->
+
+<script language="JavaScript" type="text/javascript">
+    <!--
+    // Customize the widget by editing the fields below
+    // All fields are required
+
+    // Your Feedity RSS feed URL
+    feedity_widget_feed = "https://timesofindia.indiatimes.com/rssfeedstopstories.cms";
+
+    // Number of items to display in the widget
+    feedity_widget_numberofitems = "10";
+
+    // Show feed item description (values: yes or no)
+    feedity_widget_showdescription = "yes";
+
+    // Show feed item published date (values: yes or no)
+    feedity_widget_showdate = "yes";
+
+    // Widget box width (in px, pt, em, or %)
+    feedity_widget_width = "500px";
+
+    // Widget box background color in hex or by name (eg: #ffffff or white)
+    feedity_widget_backcolor = "#ffffff";
+
+    // Widget text & link color in hex or by name (eg: #000000 or black)
+    feedity_widget_fontcolor = "#000000";
+    //-->
+</script>
+<script language="JavaScript" type="text/javascript" src="https://feedity.com/js/widget.js"></script>
+
+<div class="container">
+    <div class="row">
+        {{#rssFeed}}
+            <div class="col-sm-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">{{site}}</div>
+                    <div class="panel-body"><a href="{{link}}">{{title}}</a></div>
+                    <script>
+                        var $log = $( "#log" ),
+                                str = '<div class="panel-footer">{{htmlDoc}}</div>',
+                                html = $.parseHTML(str);
+
+                        $log.append( html );
+                    </script>
+
+                </div>
+            </div>
+        {{/rssFeed}}
+    </div>
+</div>
+
+</body>
+</html>

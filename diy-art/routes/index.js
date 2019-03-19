@@ -5,6 +5,40 @@ const router = vertex.router();
 const firebase = require("firebase");
 
 const database = firebase.database();
+const Store = require('data-store');
+const store = new Store({ path: 'config.json' });
+
+let Parser = require('rss-parser');
+let parser = new Parser();
+var HTMLParser = require('node-html-parser');
+var rssList = [];
+
+(async () => {
+
+	let feed = await parser.parseURL('http://feeds.reuters.com/reuters/technologyNews');
+	feed.items.forEach(item => {
+		const obj = {
+			title: item.title,
+			link: item.link,
+			site: "Reuters",
+			htmlDoc: item.content
+		};
+		rssList.push(obj)
+	});
+
+	let feed1 = await parser.parseURL('https://timesofindia.indiatimes.com/rssfeedstopstories.cms');
+	feed1.items.forEach(item => {
+		const obj = {
+			title: item.title,
+			link: item.link,
+			site: "Times of India",
+			htmlDoc: item.content
+		};
+		rssList.push(obj)
+	});
+
+})();
+
 
 router.get('/', (req, res) => {
 	res.render('DIY', null)
@@ -156,6 +190,16 @@ router.get('/products', (req, res) => {
 });
 });
 
+router.get('/rss', (req, res) => {
+		//frame.setHTML({ body: 'Hello' })
+	const data = {
+		rssFeed: rssList
+	};
+
+	res.render('rss', data)
+		// ...
+});
+
 
 router.get('/getProducts', (req, res) => {
 	const productRef = database.ref('products/');
@@ -211,7 +255,6 @@ router.get('/addNewProduct/:name/:price/:image', (req,res) => {
 router.get('/removeCartItem/:id', (req,res) => {
 
 	const prodId = req.params.id;
-	console.log(prodId);
 	database.ref('cart').child(prodId).remove().then(function(){
 		res.json({
 			confirmation: 'success',
