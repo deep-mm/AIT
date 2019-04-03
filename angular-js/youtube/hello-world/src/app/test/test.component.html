@@ -1,0 +1,26 @@
+<p>
+  test works!
+</p>
+<input [disabled]="isDisabled" type="text" name="name" [id]="myId">
+<h2>Name = {{name}}</h2>
+
+<h2 [class.text-green]="hasError">Hello</h2>
+<h2 [ngClass]="classMessage">Ng Class</h2>
+
+<h2 [style.color]="hasError ? 'red' : 'green'">Style Binding</h2>
+<h2 [ngStyle]="textStyle">Ng Style</h2>
+
+<button (click)="onClick($event)" (mouseover)="onClick($event)">Greet</button>
+<input #enteredName type="text" ngModel/>
+<p>{{enteredName.value}}</p>
+<button (click)="showAlert(enteredName.value)">Show Name</button>
+
+<h2 *ngIf="displayName; else elseBlock">Structural Directive</h2>
+{{greeting}}
+
+<ng-template #elseBlock>
+  <h2>
+    This is else block
+  </h2>
+</ng-template>
+

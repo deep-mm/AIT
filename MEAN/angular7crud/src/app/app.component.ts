@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {SlimLoadingBarModule, SlimLoadingBarService} from "ng2-slim-loading-bar";
-import {NavigationCancel, Event, NavigationEnd, NavigationError, NavigationStart, Router} from "@angular/router";
+import {SlimLoadingBarModule, SlimLoadingBarService} from 'ng2-slim-loading-bar';
+import {NavigationCancel, Event, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
+import { FormGroup} from "@angular/forms"
 
 @Component({
   selector: 'app-root',

@@ -1,0 +1,12 @@
+.text-green{
+    color: green;
+    font-style: italic;
+}
+
+.text-success{
+    color: blue;
+}
+
+.text-error{
+    color: red;
+}
